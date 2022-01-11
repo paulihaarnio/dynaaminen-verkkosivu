@@ -12,27 +12,19 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-
-      const person = {
-        fname: "Pauli",
-        lname: "Haarnio"
-      }
-
-      const element = (
-        <div>
-        <h3>
-          Hello
-          </h3>
-          <p>
-            {person.fname} {person.lname}
-            </p> 
-          </div>
-      )
-
-      ReactDOM.render(
-        element,
-        document.getElementById('root')
+        let second=0
+        function tick(){
+            const element =(
+                <h3>{second}</h3>
+            );
+            ReactDOM.render(
+        element, document.getElementById('root')
       );
+      second++
+        }
+        setInterval(tick,1000);
+
+     
 
     </script>
     <!--

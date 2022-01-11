@@ -13,26 +13,17 @@
     <div id="root"></div>
     <script type="text/babel">
 
-      const person = {
-        fname: "Pauli",
-        lname: "Haarnio"
-      }
-
-      const element = (
-        <div>
-        <h3>
-          Hello
-          </h3>
-          <p>
-            {person.fname} {person.lname}
-            </p> 
-          </div>
-      )
-
-      ReactDOM.render(
-        element,
-        document.getElementById('root')
+        function tick(){
+            const element =(
+                <h3>{new Date().toLocaleTimeString()}</h3>
+            );
+            ReactDOM.render(
+        element, document.getElementById('root')
       );
+        }
+        setInterval(tick,1000);
+
+     
 
     </script>
     <!--
