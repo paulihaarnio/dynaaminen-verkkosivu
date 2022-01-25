@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div>
-    <h1>Alcometer by Pauli Haarnio</h1>
+    <h1>🍻Alcometer by Pauli Haarnio🍻</h1>
     <form onSubmit={calculate}>
       <label>Weight</label>
       <input type="number" value={weight} onChange={e=> setweight(e.target.value)}  /> <br />
