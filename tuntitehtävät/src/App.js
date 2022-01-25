@@ -6,16 +6,20 @@ function App() {
     
 useEffect(()=> {
 const nimet=['Pauli', 'Enna', 'Pinja']
-setrivit[nimet]
+setrivit(nimet)
+console.log('useEffect');
+console.log(nimet);
 },[])
 
 return(
     <div style={{margin:'20px'}}>
         <h3>Nimet</h3>
         <ul>
-            <li>Pauli</li>
-            <li>Enna</li>
-            <li>Pinja</li>
+           {
+               rivit.map(rivi=>(
+                   <li>{rivi}</li>
+               ))
+           }
         </ul>
     </div>
 );
