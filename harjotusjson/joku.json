@@ -1,0 +1,16 @@
+{"opintojaksot":[
+    {"otsikko":"1", "laajuus":"","opettaja":{"firstname":"","lastname":""},
+    "opiskelija":[{"firstname":"","lastname":""},
+        {"firstname":"","lastname":""},
+        {"firstname":"","lastname":""},
+        {"firstname":"","lastname":""}
+    ]
+},
+{"otsikko":"2", "laajuus":"","opettaja":{"firstname":"","lastname":""},
+    "opiskelija":[{"firstname":"","lastname":""},
+        {"firstname":"","lastname":""},
+        {"firstname":"","lastname":""},
+        {"firstname":"","lastname":""}
+    ]
+}
+]}
