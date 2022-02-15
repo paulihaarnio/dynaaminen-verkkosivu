@@ -16,48 +16,59 @@ function App() {
  const [update, setupdate] = useState()
 
   
- function handleChange(){
+ function showData(){
   setCOUNTRY(document.getElementById("country").value)
-  seturl("https://covid-api.mmediagroup.fr/v1/cases?country=")
+ 
+  axios.get(url+COUNTRY).then((response)=>{
+    settemplate(response.data.All)})
+    setcountryname(template.country)
+    setconfirmed(template.confirmed)
+    setdeaths(template.deaths)
+    setpopulation(template.population)
+    setupdate(template.updated)
 }
+
+
+
  useEffect(() => {
-  
+  seturl("https://covid-api.mmediagroup.fr/v1/cases?country=")
   document.getElementById("output1").innerHTML=""
   document.getElementById("output2").innerHTML=""
   
 }, []);
 
 
-function addCountry(){
+/*function addCountry(){
   axios.get(url+COUNTRY).then((response)=>{
     settemplate(response.data.All)
   }).catch(error=>{
     alert(error)
   })
-}
+}*/
 
 
 
-  function Button(){
+  function Button(){/*
       setcountryname(template.country)
       setconfirmed(template.confirmed)
       setdeaths(template.deaths)
       setpopulation(template.population)
       setupdate(template.updated)
     setCOUNTRY("")
+    */
 }
 
   
   return(
     <div>
-      <h1>Covid-19 data infosite</h1>
+      <h1>Covid-19 data infosite🦠</h1>
       <h4>By Pauli Haarnio</h4>
       <p>Please use english name of the country and the first letter should be in capital. Example Germany not germany.</p>
-      <label>Country</label>
-      <input id='country' onChange={handleChange}></input> 
+      <label>Country:</label>
+      <input id='country' onChange={showData}></input> 
       <br/>
-      <button onClick={addCountry}>Confirm country</button>
-      <button onClick={ Button}>Print information</button><br/>
+     
+      <button onClick={Button} >Print information</button><br/>
       Country:
       <output>
         {countryname}
