@@ -65,7 +65,7 @@ function App() {
       <h4>By Pauli Haarnio</h4>
       <p>Please use english name of the country and the first letter should be in capital. Example Germany not germany.</p>
       <label>Country:</label>
-      <input id='country' onChange={showData}></input> 
+      <input id='country' onInput={showData}></input> 
       <br/>
      
       <button onClick={Button} >Print information</button><br/>
