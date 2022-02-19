@@ -7,8 +7,7 @@ import axios from 'axios';
 function App() {
 
  const [url, setUrl] = useState()
- const [template, setTemplate] = useState("")
- const [countryname, setCountryname] = useState("");
+ const [countryName, setCountryName] = useState("");
  const [confirmed, setConfirmed] = useState(0)
  const [deaths, setDeaths] = useState(0)
  const [population, setPopulation] = useState(0)
@@ -23,27 +22,15 @@ function App() {
   
  function showData(){
   axios.get(url+document.getElementById("country").value).then((response)=>{
-    setTemplate(response.data.All)})
-}
-
-/*function addCountry(){
-  setCOUNTRY(document.getElementById("country").value)
-  axios.get(url+COUNTRY).then((response)=>{
-    setTemplate(response.data.All)
-  }).catch(error=>{
-    alert(error)
+  setCountryName(response.data.All.country)
+  setConfirmed(response.data.All.confirmed)
+  setDeaths(response.data.All.deaths)
+  setPopulation(response.data.All.population)
+  setUpdate(response.data.All.updated)    
   })
+  
 }
-*/
 
-
-  function printInfo(){
-    setCountryname(template.country)
-    setConfirmed(template.confirmed)
-    setDeaths(template.deaths)
-    setPopulation(template.population)
-    setUpdate(template.updated)    
-}
 
   
   return(
@@ -54,10 +41,9 @@ function App() {
       <label>Country:</label>
       <input id='country' onChange={showData}></input> 
       <br/>
-      <button onClick={printInfo}>Print information</button><br/>
       Country:
       <output>
-        {countryname}
+        {countryName}
       </output><br/>
       Population:
       <output>
