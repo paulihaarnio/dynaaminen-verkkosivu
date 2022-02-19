@@ -5,57 +5,44 @@ import axios from 'axios';
 
  
 function App() {
- /*const URL="https://covid-api.mmediagroup.fr/v1/cases?country=Sweden"*/
- const [url, seturl] = useState()
- const [COUNTRY, setCOUNTRY] = useState() 
- const [template, settemplate] = useState()
- const [countryname, setcountryname] = useState();
- const [confirmed, setconfirmed] = useState(0)
- const [deaths, setdeaths] = useState(0)
- const [population, setpopulation] = useState(0)
- const [update, setupdate] = useState()
 
-  
- function showData(){
-  setCOUNTRY(document.getElementById("country").value)
- 
-  axios.get(url+COUNTRY).then((response)=>{
-    settemplate(response.data.All)})
-    setcountryname(template.country)
-    setconfirmed(template.confirmed)
-    setdeaths(template.deaths)
-    setpopulation(template.population)
-    setupdate(template.updated)
-}
-
-
+ const [url, setUrl] = useState()
+ const [template, setTemplate] = useState("")
+ const [countryname, setCountryname] = useState("");
+ const [confirmed, setConfirmed] = useState(0)
+ const [deaths, setDeaths] = useState(0)
+ const [population, setPopulation] = useState(0)
+ const [update, setUpdate] = useState("")
 
  useEffect(() => {
-  seturl("https://covid-api.mmediagroup.fr/v1/cases?country=")
+  setUrl("https://covid-api.mmediagroup.fr/v1/cases?country=")
   document.getElementById("output1").innerHTML=""
   document.getElementById("output2").innerHTML=""
   
 }, []);
-
+  
+ function showData(){
+  axios.get(url+document.getElementById("country").value).then((response)=>{
+    setTemplate(response.data.All)})
+}
 
 /*function addCountry(){
+  setCOUNTRY(document.getElementById("country").value)
   axios.get(url+COUNTRY).then((response)=>{
-    settemplate(response.data.All)
+    setTemplate(response.data.All)
   }).catch(error=>{
     alert(error)
   })
-}*/
+}
+*/
 
 
-
-  function Button(){/*
-      setcountryname(template.country)
-      setconfirmed(template.confirmed)
-      setdeaths(template.deaths)
-      setpopulation(template.population)
-      setupdate(template.updated)
-    setCOUNTRY("")
-    */
+  function printInfo(){
+    setCountryname(template.country)
+    setConfirmed(template.confirmed)
+    setDeaths(template.deaths)
+    setPopulation(template.population)
+    setUpdate(template.updated)    
 }
 
   
@@ -65,10 +52,9 @@ function App() {
       <h4>By Pauli Haarnio</h4>
       <p>Please use english name of the country and the first letter should be in capital. Example Germany not germany.</p>
       <label>Country:</label>
-      <input id='country' onInput={showData}></input> 
+      <input id='country' onChange={showData}></input> 
       <br/>
-     
-      <button onClick={Button} >Print information</button><br/>
+      <button onClick={printInfo}>Print information</button><br/>
       Country:
       <output>
         {countryname}
@@ -85,7 +71,7 @@ function App() {
       <output>
         {deaths}
       </output><br/>
-      Survuval rate:
+      Survival rate:
       <output id='output1'>
         {((confirmed-deaths)/confirmed).toFixed(4)*100+"%"}
       </output><br/>
@@ -97,10 +83,6 @@ function App() {
       <output>
         {update}
       </output><br/>
-      <output>
-        {}
-      </output><br/>
-    
     </div>
   )
 }
